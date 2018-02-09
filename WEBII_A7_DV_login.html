@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h2>Web-II Registration Page</h1>
+<form>
+  <table>
+    <tr>
+      <td align="right"><label for="email">E-mail</label></td>
+      <td align="left"><input id = "email" type="email" 
+	placeholder="Enter E-mail Address" required>
+	<span id="email_check"></span></td>
+    </tr>
+
+    <tr>
+      <td align="right"><label for="username">Username</label></td>
+      <td align="left"><input id = "username" type="text" 
+	placeholder="Minimum 8 characters"required>
+	<span id="username_check"></span></td>
+    </tr>
+        <tr>
+      <td align="right"><label for="pass1">Password</label></td>
+      <td align="left"><input id ="pass1" type="password" 
+	placeholder="Minimum 8 characters"required>
+	<span id="pw_check" ></span></td>
+    </tr>
+        <tr>
+      <td align="right"><label for="pass2">Confirm Password</label></td>
+      <td align="left"><input id = "pass2" type="password" 
+	placeholder="Confirm Password"required>
+	<span id="pass_Confirm"></span></td>
+    </tr>
+  </table>
+</form>
+	<script>
+		
+		document.getElementById("email").onblur = function(){
+			 var regex =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			if(regex.test(this.value)){
+				document.getElementById("email_check").style.color = "green";
+				document.getElementById("email_check").innerHTML = "&#10003";
+			}else{
+				document.getElementById("email_check").style.color = "red";
+				document.getElementById("email_check").textContent =" > Invalid E-mail, please re-enter !";
+			}
+		};
+
+		document.getElementById("username").onblur = function(){
+			var uname = document.getElementById("username_check");
+			if(this.value.length< 8){
+				document.getElementById("username_check").style.color = "red";
+				uname.textContent = " > ERROR!...Username must contain at least 8 or more characters";
+			} else{
+				document.getElementById("username_check").style.color = "green";
+				uname.innerHTML = "&#10003";
+			}
+		};	
+		
+		document.getElementById("pass1").onblur = function(){
+			var pw = document.getElementById("pw_check");
+			if(this.value.length< 8){
+				document.getElementById("pw_check").style.color = "red";
+				pw.textContent = "> ERROR!...Password must contain at least 8 or more characters";
+			} else{
+				document.getElementById("pw_check").style.color = "green";
+				pw.innerHTML = "&#10003";
+			}
+		}
+		
+		document.getElementById("pass2").onblur = function(){
+			var password = document.getElementById("pass1").value;
+			if(this.value != password){
+				document.getElementById("pass_Confirm").style.color = "red";
+				document.getElementById("pass_Confirm").textContent =" > ERROR!...Password does not match !. Please try again!";
+			}else{
+				document.getElementById("pass_Confirm").style.color = "green";
+				document.getElementById("pass_Confirm").innerHTML = "&#10003";
+			}
+		};
+
+		
+		
+	</script>
+
+</body>
+</html>
